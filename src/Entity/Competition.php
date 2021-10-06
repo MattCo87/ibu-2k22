@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompetitionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +36,16 @@ class Competition
      * @ORM\JoinColumn(nullable=false)
      */
     private $gender;
+
+    /**
+     * @ORM\OneToMany(targetEntity=StageCompetition::class, mappedBy="competition")
+     */
+    private $stageCompetitions;
+
+    public function __construct()
+    {
+        $this->stageCompetitions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -72,6 +84,36 @@ class Competition
     public function setGender(?Gender $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StageCompetition[]
+     */
+    public function getStageCompetitions(): Collection
+    {
+        return $this->stageCompetitions;
+    }
+
+    public function addStageCompetition(StageCompetition $stageCompetition): self
+    {
+        if (!$this->stageCompetitions->contains($stageCompetition)) {
+            $this->stageCompetitions[] = $stageCompetition;
+            $stageCompetition->setCompetition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStageCompetition(StageCompetition $stageCompetition): self
+    {
+        if ($this->stageCompetitions->removeElement($stageCompetition)) {
+            // set the owning side to null (unless already changed)
+            if ($stageCompetition->getCompetition() === $this) {
+                $stageCompetition->setCompetition(null);
+            }
+        }
 
         return $this;
     }
