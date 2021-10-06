@@ -34,6 +34,7 @@ class StageFixtures extends Fixture implements OrderedFixtureInterface
             $stage->setName($name)
                 ->setCountry($this->getReference($country));
             $manager->persist($stage);
+            $this->addReference($stage->getName(), $stage);
         }
         unset($name, $tabstage, $stage, $country);
 

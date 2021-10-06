@@ -21,7 +21,6 @@ class GenderFixtures extends Fixture implements OrderedFixtureInterface
             "Homme",
             "Femme", 
             "Mixte", 
-            "Simple",
         ];
         
         foreach ($tabgender as &$value)

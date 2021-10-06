@@ -25,6 +25,7 @@ class DistanceFixtures extends Fixture implements OrderedFixtureInterface
             "4 X 7.5 Km",
             "4 x 6 Km",
             "12.5 Km",
+            "Simple",
         ];
         
         foreach ($tabdistance as &$value)
