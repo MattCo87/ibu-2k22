@@ -23,7 +23,7 @@ class CompetitionFixtures extends Fixture implements OrderedFixtureInterface
             ["Femme", "10 Km", "Poursuite"],
             ["Femme", "4 x 6 Km", "Relais"],
             ["Femme", "12.5 Km", "Mass Start"],
-            ["Homme", "20 Km", "Individuel"],
+            ["Homme", "20 Km", "Individuel", 4, 5, ],
             ["Homme", "10 Km", "Sprint"],
             ["Homme", "12.5 Km", "Poursuite"],
             ["Homme", "4 X 7.5 Km", "Relais"],

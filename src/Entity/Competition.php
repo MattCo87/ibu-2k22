@@ -42,6 +42,7 @@ class Competition
      */
     private $stageCompetitions;
 
+
     public function __construct()
     {
         $this->stageCompetitions = new ArrayCollection();
