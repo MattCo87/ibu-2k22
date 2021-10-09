@@ -18,27 +18,30 @@ class CompetitionFixtures extends Fixture implements OrderedFixtureInterface
          */
         $tabcompetition = [];
         $tabcompetition = [
-            ["Femme", "15 Km", "Individuel"],
-            ["Femme", "7.5 Km", "Sprint"],
-            ["Femme", "10 Km", "Poursuite"],
-            ["Femme", "4 x 6 Km", "Relais"],
-            ["Femme", "12.5 Km", "Mass Start"],
-            ["Homme", "20 Km", "Individuel", 4, 5, ],
-            ["Homme", "10 Km", "Sprint"],
-            ["Homme", "12.5 Km", "Poursuite"],
-            ["Homme", "4 X 7.5 Km", "Relais"],
-            ["Homme", "15 Km", "Mass Start"],
-            ["Mixte", "4 X 7.5 Km", "Relais"],
-            ["Mixte", "Simple", "Relais"],
+            ["Femme", "15 Km", "Individuel", 3, 5, 2],
+            ["Femme", "7.5 Km", "Sprint", 2.5, 3, 1],
+            ["Femme", "10 Km", "Poursuite", 2, 5, 2],
+            ["Femme", "4 x 6 Km", "Relais", 0, 0, 0],
+            ["Femme", "12.5 Km", "Mass Start", 2.5, 5, 2],
+            ["Homme", "20 Km", "Individuel", 4, 5, 2],
+            ["Homme", "10 Km", "Sprint", 3.3, 3, 1],
+            ["Homme", "12.5 Km", "Poursuite", 2.5, 5, 2],
+            ["Homme", "4 X 7.5 Km", "Relais", 0, 0, 0],
+            ["Homme", "15 Km", "Mass Start", 3, 5, 2],
+            ["Mixte", "4 X 7.5 Km", "Relais", 0, 0, 0],
+            ["Mixte", "Simple", "Relais", 0, 0, 0],
         ];
         $i = 1;
         
-        foreach ($tabcompetition as list($gender, $distance, $style)) {
+        foreach ($tabcompetition as list($gender, $distance, $style, $stepDistance, $stepNumber, $shotNumber)) {
             $competition = new Competition();
             $competition
                 ->setGender($this->getReference($gender))
                 ->setDistance($this->getReference($distance))
-                ->setStyle($this->getReference($style));
+                ->setStyle($this->getReference($style))
+                ->setStepDistance($stepDistance)
+                ->setStepNumber($stepNumber)
+                ->setShotNumber($shotNumber);
             $manager->persist($competition);
             $this->addReference("Competition" . $i, $competition);
             $i++;

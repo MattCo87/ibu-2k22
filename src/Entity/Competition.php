@@ -42,6 +42,21 @@ class Competition
      */
     private $stageCompetitions;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $stepDistance;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $stepNumber;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $shotNumber;
+
 
     public function __construct()
     {
@@ -115,6 +130,42 @@ class Competition
                 $stageCompetition->setCompetition(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStepDistance(): ?float
+    {
+        return $this->stepDistance;
+    }
+
+    public function setStepDistance(float $stepDistance): self
+    {
+        $this->stepDistance = $stepDistance;
+
+        return $this;
+    }
+
+    public function getStepNumber(): ?int
+    {
+        return $this->stepNumber;
+    }
+
+    public function setStepNumber(int $stepNumber): self
+    {
+        $this->stepNumber = $stepNumber;
+
+        return $this;
+    }
+
+    public function getShotNumber(): ?int
+    {
+        return $this->shotNumber;
+    }
+
+    public function setShotNumber(int $shotNumber): self
+    {
+        $this->shotNumber = $shotNumber;
 
         return $this;
     }
