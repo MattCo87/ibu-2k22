@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\StyleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\ShotRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=StyleRepository::class)
+ * @ORM\Entity(repositoryClass=ShotRepository::class)
  */
-class Style
+class Shot
 {
     /**
      * @ORM\Id

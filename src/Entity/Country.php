@@ -34,9 +34,15 @@ class Country
      */
     private $stages;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Athlete::class, mappedBy="country")
+     */
+    private $athletes;
+
     public function __construct()
     {
         $this->stages = new ArrayCollection();
+        $this->athletes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,36 @@ class Country
             // set the owning side to null (unless already changed)
             if ($stage->getCountry() === $this) {
                 $stage->setCountry(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Athlete[]
+     */
+    public function getAthletes(): Collection
+    {
+        return $this->athletes;
+    }
+
+    public function addAthlete(Athlete $athlete): self
+    {
+        if (!$this->athletes->contains($athlete)) {
+            $this->athletes[] = $athlete;
+            $athlete->setCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAthlete(Athlete $athlete): self
+    {
+        if ($this->athletes->removeElement($athlete)) {
+            // set the owning side to null (unless already changed)
+            if ($athlete->getCountry() === $this) {
+                $athlete->setCountry(null);
             }
         }
 

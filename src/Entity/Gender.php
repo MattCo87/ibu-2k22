@@ -25,13 +25,13 @@ class Gender
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Competition::class, mappedBy="gender")
+     * @ORM\OneToMany(targetEntity=Athlete::class, mappedBy="gender")
      */
-    private $competitions;
+    private $athletes;
 
     public function __construct()
     {
-        $this->competitions = new ArrayCollection();
+        $this->athletes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,29 +52,29 @@ class Gender
     }
 
     /**
-     * @return Collection|Competition[]
+     * @return Collection|Athlete[]
      */
-    public function getCompetitions(): Collection
+    public function getAthletes(): Collection
     {
-        return $this->competitions;
+        return $this->athletes;
     }
 
-    public function addCompetition(Competition $competition): self
+    public function addAthlete(Athlete $athlete): self
     {
-        if (!$this->competitions->contains($competition)) {
-            $this->competitions[] = $competition;
-            $competition->setGender($this);
+        if (!$this->athletes->contains($athlete)) {
+            $this->athletes[] = $athlete;
+            $athlete->setGender($this);
         }
 
         return $this;
     }
 
-    public function removeCompetition(Competition $competition): self
+    public function removeAthlete(Athlete $athlete): self
     {
-        if ($this->competitions->removeElement($competition)) {
+        if ($this->athletes->removeElement($athlete)) {
             // set the owning side to null (unless already changed)
-            if ($competition->getGender() === $this) {
-                $competition->setGender(null);
+            if ($athlete->getGender() === $this) {
+                $athlete->setGender(null);
             }
         }
 

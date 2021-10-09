@@ -31,13 +31,13 @@ class Stage
     private $country;
 
     /**
-     * @ORM\OneToMany(targetEntity=StageCompetition::class, mappedBy="stage")
+     * @ORM\ManyToMany(targetEntity=Zone::class, mappedBy="stages")
      */
-    private $stageCompetitions;
+    private $zones;
 
     public function __construct()
     {
-        $this->stageCompetitions = new ArrayCollection();
+        $this->zones = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,30 +70,27 @@ class Stage
     }
 
     /**
-     * @return Collection|StageCompetition[]
+     * @return Collection|Zone[]
      */
-    public function getStageCompetitions(): Collection
+    public function getZones(): Collection
     {
-        return $this->stageCompetitions;
+        return $this->zones;
     }
 
-    public function addStageCompetition(StageCompetition $stageCompetition): self
+    public function addZone(Zone $zone): self
     {
-        if (!$this->stageCompetitions->contains($stageCompetition)) {
-            $this->stageCompetitions[] = $stageCompetition;
-            $stageCompetition->setStage($this);
+        if (!$this->zones->contains($zone)) {
+            $this->zones[] = $zone;
+            $zone->addStage($this);
         }
 
         return $this;
     }
 
-    public function removeStageCompetition(StageCompetition $stageCompetition): self
+    public function removeZone(Zone $zone): self
     {
-        if ($this->stageCompetitions->removeElement($stageCompetition)) {
-            // set the owning side to null (unless already changed)
-            if ($stageCompetition->getStage() === $this) {
-                $stageCompetition->setStage(null);
-            }
+        if ($this->zones->removeElement($zone)) {
+            $zone->removeStage($this);
         }
 
         return $this;
