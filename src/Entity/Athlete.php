@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AthleteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Athlete
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="athletes")
      */
     private $country;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Run::class, mappedBy="athlete")
+     */
+    private $runs;
+
+    public function __construct()
+    {
+        $this->runs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,36 @@ class Athlete
     public function setCountry(?Country $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Run[]
+     */
+    public function getRuns(): Collection
+    {
+        return $this->runs;
+    }
+
+    public function addRun(Run $run): self
+    {
+        if (!$this->runs->contains($run)) {
+            $this->runs[] = $run;
+            $run->setAthlete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRun(Run $run): self
+    {
+        if ($this->runs->removeElement($run)) {
+            // set the owning side to null (unless already changed)
+            if ($run->getAthlete() === $this) {
+                $run->setAthlete(null);
+            }
+        }
 
         return $this;
     }

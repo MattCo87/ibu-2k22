@@ -29,9 +29,15 @@ class Zone
      */
     private $stages;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Run::class, mappedBy="zone")
+     */
+    private $runs;
+
     public function __construct()
     {
         $this->stages = new ArrayCollection();
+        $this->runs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,6 +77,36 @@ class Zone
     public function removeStage(Stage $stage): self
     {
         $this->stages->removeElement($stage);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Run[]
+     */
+    public function getRuns(): Collection
+    {
+        return $this->runs;
+    }
+
+    public function addRun(Run $run): self
+    {
+        if (!$this->runs->contains($run)) {
+            $this->runs[] = $run;
+            $run->setZone($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRun(Run $run): self
+    {
+        if ($this->runs->removeElement($run)) {
+            // set the owning side to null (unless already changed)
+            if ($run->getZone() === $this) {
+                $run->setZone(null);
+            }
+        }
 
         return $this;
     }
