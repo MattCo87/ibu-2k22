@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to IBU2K22!{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>|-=-| Welcome to IBU2K22 |-=-|</h1>
+    </div>
+
+    <nav class="app_navigation">
+        <ul>
+            <li>
+                <a href="#" title="{{ 'calendrier' | trans | capitalize }}" id="calendrier">
+                    {{ 'calendrier' | trans | capitalize }}
+                </a>
+                <p id="ptest">
+                    Ceci est un paragraphe test
+                </p>
+            </li>                   
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block javascripts %}
+    <script defer>
+        window.addEventListener("DOMContentLoaded", () => {
+            const calendrier = document.getElementById('calendrier')
+            const ptest = document.getElementById('ptest')
+            ptest.style.visibility = "hidden"
+
+            calendrier.addEventListener('click', event => {
+                if(ptest.style.visibility == "hidden"){
+                    ptest.style.visibility = "visible"
+                }else{
+                    ptest.style.visibility = "hidden"
+                }
+                }
+            )
+        })
+    </script>
+{% endblock %}  
