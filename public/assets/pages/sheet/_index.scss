@@ -1,0 +1,50 @@
+&.sheet{
+    article{
+        section{
+            .border_title{
+                border: #6b2b06 solid 1px;
+            }
+
+            .vtitle{
+                text-align: center;
+                font-weight: bold;
+                color: white;
+                background-color: #6b2b06;
+                text-transform: uppercase;
+            }
+
+            .htitle{
+                text-align: center;
+                color: #6b2b06;
+                font-weight: bold;
+            }
+
+            .subtitle{
+                text-align: center;
+                color: white;
+                background-color: #6b2b06;
+            }
+
+            .data_case{
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: black;  
+                font-family: $font-family-third;   
+                display: flex;
+                justify-content: center;
+                align-items: center;  
+            }
+
+            @import 'healthpoints';
+            @import 'level';
+            @import 'attack';
+            @import 'weapon';
+            @import 'defense';
+            @import 'shock';
+            @import 'skills';
+            @import 'characteristic';
+            @import 'magic';
+            @import 'equipment';
+        }
+    }
+}

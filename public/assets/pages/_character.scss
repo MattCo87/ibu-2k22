@@ -1,0 +1,140 @@
+&.character {
+    article {
+        section {
+            .app_grid {
+                .app_grid_item {
+                    .app_grid_item_image {
+                        height: 30vh;
+                        object-fit: cover;
+                        object-position: center top;
+                    }
+                }
+            }
+
+            .character_infos {
+                @include respond(sm) {
+                    display: grid;
+                    grid-template-columns: 4fr 6fr;
+                    grid-gap: 1rem;
+                }
+
+                .far,
+                .fas {
+                    color: $color-bg-alt
+                }
+
+                .fa-coins {
+                    color: darkgoldenrod;
+                }
+
+                .fa-venus {
+                    color: rebeccapurple;
+                }
+
+                .fa-mars {
+                    color: cornflowerblue;
+                }
+
+                .image {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: stretch;
+
+                    .icons {
+                        margin-top: 1.5rem;
+                        display: flex;
+                        align-items: stretch;
+                        justify-content: space-around;
+
+                        span {
+                            flex: 1;
+                            font-family: $font-family-secondary;
+                            font-size: 0.8rem;
+                            font-weight: 600;
+                            text-align: center;
+
+                            i {
+                                display: block;
+                                margin-bottom: 0.25rem;
+                                font-size: 2rem;
+                            }
+                        }
+
+                        .app_form_group {
+                            flex: 1;
+                            margin: 0 0.5rem 1rem;
+
+                            span {
+                                margin-bottom: 0.5rem;
+
+                                i {
+                                    display: inline-block;
+                                    margin: 0 0.5rem;
+                                }
+                            }
+                        }
+                    }
+
+                    .actions {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 1.5rem 0;
+
+                        @include respond(sm) {
+                            margin-bottom: 0;
+                        }
+
+                        & > * {
+                            margin: 0 0.5rem;
+                            flex: 1;
+                        }
+                    }
+
+                    .app_form_group {
+                        label {
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+
+                .details {
+                    .content {
+                        p {
+                            margin-bottom: 1rem;
+
+                            &:last-child {
+                                margin: 0;
+                            }
+                        }
+
+                        & > span {
+                            display: block;
+                            margin-bottom: 0.25rem;
+                            font-weight: 900;
+                        }
+
+                        blockquote {
+                            margin-bottom: 1rem;
+                            padding: 0.5rem;
+                            background-color: $box-shadow-color-alt;
+                            border-radius: $border-radius-default;
+                            box-shadow: inset calc(#{$box-shadow-x} / 2) calc(#{$box-shadow-y} / 2) $box-shadow-radius $box-shadow-color;
+                        }
+                    }
+                }
+            }
+
+            .app_form {
+                .image {
+                    .icons {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        grid-gap: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
