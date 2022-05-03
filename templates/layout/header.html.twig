@@ -11,29 +11,47 @@
 	<nav class="app_navigation">
 		<ul>
 			{% if app.user %}
-						<li>
+				{% if app.user.athlete %}
+					{% set i = 1 %}
+					<li>
+						<img class="app_image thumbnail2" src="{{ asset(app.user.athlete.country.flag) }}" alt=""/>
+					</li>
+					<li>
+						<a href="{{ path('app_athlete_profil', {'id': app.user.athlete.id }) }}" title="Perso">
+							{{ app.user.athlete.firstname }}
+							{{ app.user.athlete.lastname }}
+						</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ path('app_athlete_choose') }}" title="Perso">
+							Challenger
+						</a>
+					</li>
+				{% endif %}
+			</li>
+			<li>
 				<a href="{{ path('app_calendar') }}" title="Calendrier">
 					Calendrier
 				</a>
 			</li>
-				<li>
-					<a href="#" {% if 'user' in app.request.get('_route') %} class="active" {% endif %}>{{ app.user.email is not null ? app.user.email : app.user.fullname }}</a>
+			<li>
+				<a href="#" {% if 'user' in app.request.get('_route') %} class="active" {% endif %}>{{ app.user.email is not null ? app.user.email : app.user.fullname }}</a>
 
-					<ul class="app_navigation_dropdown">
-						<li>
-							<a href="{{ path('app_logout') }}" title="logout">
-								{{ 'Déconnexion' | trans | capitalize }}
-							</a>
-						</li>
-					</ul>
-				</li>
-			{% else %}
-				<li>
-					<a href="{{ path('app_login') }}" title="{{ 'login' | trans | capitalize }}">
-						Connexion
-					</a>
-				</li>
-			{% endif %}
-		</ul>
-	</nav>
-</header>
+				<ul class="app_navigation_dropdown">
+					<li>
+						<a href="{{ path('app_logout') }}" title="logout">
+							{{ 'Déconnexion' | trans | capitalize }}
+						</a>
+					</li>
+				</ul>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ path('app_login') }}" title="{{ 'login' | trans | capitalize }}">
+					Connexion
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav></header>

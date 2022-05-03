@@ -44,9 +44,15 @@ class Athlete
      */
     private $runs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="athlete")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->runs = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,6 +132,36 @@ class Athlete
             // set the owning side to null (unless already changed)
             if ($run->getAthlete() === $this) {
                 $run->setAthlete(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setAthlete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getAthlete() === $this) {
+                $user->setAthlete(null);
             }
         }
 

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to IBU2K22!
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div>
+			<h1>Choisis ton athlète</h1>
+		</div>
+	</header>
+<main class="main_center">
+		<table class="app_table">
+			{% for athlete in athletes %}
+				<tr>
+                					<td>
+						<img class="app_image thumbnail" src="{{ asset(athlete.country.flag) }}" alt=""/>
+					</td> 
+					<td>
+						{{ athlete.country.name }}
+					</td>
+                   
+					<td>
+						{{ athlete.gender.name }}
+					</td>
+					<td>
+						{{ athlete.firstname }}
+					</td>
+					<td>
+						{{ athlete.lastname }}
+					</td>
+					<td>
+				        <a href="#" title="consult">
+					        -->
+				        </a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</main>
+
+{% endblock %}

@@ -27,7 +27,7 @@ class PlayController extends AbstractController
     public function consult(Run $run): Response
     {
         $run = $this->emr->find($run->getId());
-$shotNumber = intval($run->getCompetition()->getShotNumber());
+        $shotNumber = intval($run->getCompetition()->getShotNumber());
         //dd($run);
         return $this->render('play/index.html.twig', [
             'run' => $run,
