@@ -6,11 +6,11 @@
     box-shadow: $box-shadow-x $box-shadow-y $box-shadow-radius $box-shadow-color;
 
     &.thumbnail {
-        margin-bottom: 0.5rem;
+        margin-bottom: -0.75rem;
         height: 2rem;
         width: 2rem !important;
         object-fit: contain;
-        object-position: top;
+        object-position:center;
         border-radius: 50% !important;
 
         @include respond(sm) {

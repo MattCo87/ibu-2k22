@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+	<div>
+		<h1>Bienvenue à
+			{{ run.stage.name }}
+			!</h1>
+            <p>
+            <img class="app_image" src="{{ asset(run.stage.country.flag) }}" alt=""/>
+	</div>
+
+
+	<div>
+		<p>
+			<h2>
+				Le
+				{{ run.dateRun|date("d/m/Y") }}
+				à
+				{{ run.hourRun }}
+				:
+				{{ run.competition.style.name }}
+				{{ run.competition.name }}
+				{{ run.competition.gender.name }}
+			</h2>
+		</p>
+	</div>
+	<div>
+		<p>
+			<table class="app_table">
+				<tr>
+					{% set i = 1 %}
+					<td>
+						Zone 1
+					</td>
+					{% for i in i..shotNumber %}
+						<td>
+							Tir couché
+						</td>
+						<td>
+							Zone
+							{{ i + 1 * i }}
+						</td>
+						<td>
+							Tir debout
+						</td>
+						<td>
+							{% if i == 2 %}
+								Zone 5
+							{% else %}
+								Zone 3
+							{% endif %}
+						</td>
+					{% endfor %}
+				</tr>
+			</table>
+		</p>
+	</div>
+	<div class="app_table">
+		<h2 class="app_button">
+			Participer
+		</h2>
+	</div>
+{% endblock %}

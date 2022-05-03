@@ -18,24 +18,24 @@ class CountryFixtures extends Fixture implements OrderedFixtureInterface
          */
         $tabcountry = [];
         $tabcountry = [
-            "Suède",
-            "Autriche", 
-            "France", 
-            "Allemagne", 
-            "Italie", 
-            "Chine", 
-            "Finlande", 
-            "Estonie", 
-            "Norvège", 
-            "Russie", 
-            "Ukraine", 
-            "Slovènie", 
+            ["Suède", "assets/images/flag/Sweden.svg.png"],
+            ["Autriche", "assets/images/flag/Austria.svg.png"],
+            ["France", "assets/images/flag/France.svg.png"],
+            ["Allemagne", "assets/images/flag/Germany.svg.png"],
+            ["Italie", "assets/images/flag/Italy.svg.png"],
+            ["Chine", "assets/images/flag/China.svg.png"],
+            ["Finlande", "assets/images/flag/Finland.svg.png"],
+            ["Estonie", "assets/images/flag/Estonia.svg.png"],
+            ["Norvège", "assets/images/flag/Norway.svg.png"],
+            ["Russie", "assets/images/flag/Russia.svg.png"],
+            ["Ukraine", "assets/images/flag/Ukraine.svg.png"],
+            ["Slovènie", "assets/images/flag/Slovenia.svg.png"],
         ];
-        
-        foreach ($tabcountry as &$value)
-        {
+
+        foreach ($tabcountry as list($a, $b)) {
             $country = new Country();
-            $country->setName($value);
+            $country->setName($a);
+            $country->setFlag($b);
             $manager->persist($country);
             $this->addReference($country->getName(), $country);
         }
