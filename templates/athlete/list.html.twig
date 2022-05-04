@@ -30,7 +30,11 @@
 						{{ athlete.lastname }}
 					</td>
 					<td>
-				        <a href="#" title="consult">
+						{{ athlete.total2021 }}
+					</td>
+
+					<td>
+				       <a href="{{ path('app_athlete_select', {'id': athlete.id}) }}" title="Sélectionner">
 					        -->
 				        </a>
 					</td>

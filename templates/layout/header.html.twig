@@ -18,21 +18,26 @@
 					</li>
 					<li>
 						<a href="{{ path('app_athlete_profil', {'id': app.user.athlete.id }) }}" title="Perso">
-							{{ app.user.athlete.firstname }}
-							{{ app.user.athlete.lastname }}
+							{{ app.user.athlete.firstname | trans | capitalize }}
+							{{ app.user.athlete.lastname | trans | upper }}
 						</a>
 					</li>
 				{% else %}
 					<li>
 						<a href="{{ path('app_athlete_choose') }}" title="Perso">
-							Challenger
+							{{ 'challenger' | trans | capitalize }}
 						</a>
 					</li>
 				{% endif %}
 			</li>
 			<li>
 				<a href="{{ path('app_calendar') }}" title="Calendrier">
-					Calendrier
+					{{ 'calendrier' | trans | capitalize }}
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('app_athlete_choose') }}" title="Athlètes">
+					{{ 'athlète' | trans | capitalize }}
 				</a>
 			</li>
 			<li>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\AthleteRepository;
+use App\Repository\UserRepository;
 use App\Entity\Athlete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,11 +14,13 @@ class AthleteController extends AbstractController
 {
     private $security;
     private $ema;
+    private $emu;
 
-    public function __construct(Security $security, AthleteRepository $ema)
+    public function __construct(Security $security, AthleteRepository $ema, UserRepository $emu)
     {
         $this->security = $security;
         $this->ema = $ema;
+        $this->emu = $emu;
     }
 
     /**
@@ -41,4 +44,16 @@ class AthleteController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/athlete/select/{id}", name="app_athlete_select")
+     */
+    public function SelectProfil(Athlete $athlete): Response
+    {
+        $user = $this->security->getUser()->getId();
+        $this->emu->addAthlete($user, $athlete);
+     
+        return $this->render('home/index.html.twig', [
+    
+        ]);
+    }
 }

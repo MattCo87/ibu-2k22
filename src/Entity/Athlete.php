@@ -49,6 +49,11 @@ class Athlete
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $total2021;
+
     public function __construct()
     {
         $this->runs = new ArrayCollection();
@@ -164,6 +169,18 @@ class Athlete
                 $user->setAthlete(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTotal2021(): ?int
+    {
+        return $this->total2021;
+    }
+
+    public function setTotal2021(?int $total2021): self
+    {
+        $this->total2021 = $total2021;
 
         return $this;
     }
