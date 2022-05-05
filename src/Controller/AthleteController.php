@@ -43,22 +43,36 @@ class AthleteController extends AbstractController
     public function ListProfil(Request $request): Response
     {
         $athletes = $this->ema->findAll();
+        $message = '';
+
         $var_athlete = new Athlete();
         $form = $this->createForm(AthleteType::class, $var_athlete);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($form->getData()->getGender()->getId() != 3 && $form->getData()->getCountry()->getId() != 1) {
-                $athletes = $this->ema->findBy(['gender' => $form->getData()->getGender(), 'country' => $form->getData()->getCountry()]);
+            $athletes = $this->ema->findBy(['gender' => $form->getData()->getGender(), 'country' => $form->getData()->getCountry()]);
 
-                //dd($form->getData());
-            } 
-            
+            if ($form->getData()->getGender()->getId() == '3') {
+                $athletes = $this->ema->findBy(['country' => $form->getData()->getCountry()]);
+            }
+
+            if ($form->getData()->getCountry()->getId() == '1') {
+                $athletes = $this->ema->findBy(['gender' => $form->getData()->getGender()]);
+            }
+
+            if (($form->getData()->getGender()->getId() == '3') && ($form->getData()->getCountry()->getId() == '1')) {
+                $athletes = $this->ema->findAll();
+            }             
+
+            if (empty($athletes)) {
+                $message = "Pas d'athlète de cette catégorie";
+            }
         }
 
         return $this->render('athlete/list.html.twig', [
             'athletes' => $athletes,
             'form' => $form->createView(),
+            'message' => $message,
         ]);
     }
 

@@ -20,11 +20,15 @@ class AthleteType extends AbstractType
             ->add('gender', EntityType::class, [
                 'class' => Gender::class,
                 'choice_label' => 'name',
+                'label' => ' ',
+                'placeholder' => ' ',
             ])
 
             ->add('country', EntityType::class, [
                 'class' => Country::class,
                 'choice_label' => 'name',
+                'label' => ' ',
+                'placeholder' => ' ',
             ])
 
             ->add('submit', SubmitType::class, [

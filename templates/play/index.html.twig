@@ -8,8 +8,9 @@
 		<h1>Bienvenue à
 			{{ run.stage.name }}
 			!</h1>
-            <p>
-            <img class="app_image" src="{{ asset(run.stage.country.flag) }}" alt=""/>
+		<p>
+			<img class="app_image" src="{{ asset(run.stage.country.flag) }}" alt=""/>
+		</p>
 	</div>
 
 
@@ -58,9 +59,13 @@
 			</table>
 		</p>
 	</div>
-	<div class="app_table">
-		<h2 class="app_button">
-			Participer
-		</h2>
-	</div>
+	{% if (user.athlete.gender == run.competition.gender) or (run.competition.gender.id == '3')  %}
+		<div class="app_table">
+			<h2 class="app_button">
+				<a href="{{ path('app_play_game', {'id': run.id}) }}" title="Jouer">
+					Participer
+				</a>
+			</h2>
+		</div>
+	{%	endif %}
 {% endblock %}

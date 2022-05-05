@@ -26,6 +26,13 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["janina", "hettich", "Femme", "Allemagne", 161],
             ["anna", "weidel", "Femme", "Allemagne", 72],
 
+            /*  Homme
+            */
+            ["benedikt", "doll", "Homme", "Allemagne", 557],
+            ["erik", "lesser", "Homme", "Allemagne", 535],
+            ["johannes", "kuehn", "Homme", "Allemagne", 484],
+            ["roman", "rees", "Homme", "Allemagne", 429],
+            ["philipp", "nawrath", "Homme", "Allemagne", 410],
 
             /*  Autriche
                 Femme
@@ -36,6 +43,10 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["katharina", "innerhofer", "Femme", "Autriche", 10],
             ["christina", "rieder", "Femme", "Autriche", 5],
 
+            /*  Homme
+            */
+            ["simon", "eder", "Homme", "Autriche", 431],
+            ["felix", "leitner", "Homme", "Autriche", 315],
 
             /*  Bélarus
                 Femme
@@ -46,6 +57,9 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["elena", "kruchinkina", "Femme", "Bélarus", 53],
             ["alina", "pilchuk", "Femme", "Bélarus", 1],
 
+            /*  Homme
+            */
+            ["anton", "smolski", "Homme", "Bélarus", 404],
 
             /*  Belgique
                 Femme
@@ -98,6 +112,9 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["suvi", "minkkinen", "Femme", "Finlande", 148],
             ["nastassia", "kinnunen", "Femme", "Finlande", 43],
 
+            /*  Homme
+            */
+            ["tero", "seppala", "Homme", "Finlande", 468],
 
             /*  France
                 Femme
@@ -111,6 +128,13 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["caroline", "colombo", "Femme", "France", 20],
             ["lou", "jeanmonnot", "Femme", "France", 10],
 
+            /*  Homme
+            */
+            ["quentin", "fillon maillet", "Homme", "France", 984],
+            ["emilien", "jacquelin", "Homme", "France", 706],
+            ["simon", "desthieux", "Homme", "France", 590],
+            ["fabien", "claude", "Homme", "France", 434],
+            ["antonin", "guigonnat", "Homme", "France", 379],
 
             /*  Grande-Bretagne
                 Femme
@@ -126,6 +150,10 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["federica", "sanfilippo", "Femme", "Italie", 33],
             ["samuela", "comola", "Femme", "Italie", 18],
 
+            /*  Homme
+            */
+            ["lukas", "hofer", "Homme", "Italie", 404],
+            ["thomas", "bormolini", "Homme", "Italie", 355],
 
             /*  Japon
                 Femme
@@ -153,6 +181,9 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             */
             ["gabriele", "lescinskaite", "Femme", "Lituanie", 22],
 
+            /*  Homme
+            */
+            ["vytautas", "strolia", "Homme", "Lituanie", 352],
 
             /*  Moldavie
                 Femme
@@ -172,6 +203,14 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["karoline", "erdal", "Femme", "Norvège", 61],
             ["ragnhild", "femsteinevik", "Femme", "Norvège", 46],
 
+            /*  Homme
+            */
+            ["sturla holm", "laegreid", "Homme", "Norvège", 736],
+            ["vetle sjaastad", "christiansen", "Homme", "Norvège", 708],
+            ["tarjei", "boe", "Homme", "Norvège", 601],
+            ["sivert guttorm", "bakken", "Homme", "Norvège", 553],
+            ["johannes thingnes", "boe", "Homme", "Norvège", 440],
+            ["filip fjeld", "andersen", "Homme", "Norvège", 403],
 
             /*  Pologne
                 Femme
@@ -196,6 +235,12 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["irina", "kazakevich", "Femme", "Russie", 189],
             ["valeriia", "vasnetcova", "Femme", "Russie", 153],
             ["larisa", "kuklina", "Femme", "Russie", 18],
+
+            /*  Homme
+            */
+            ["alexandr", "loginov", "Homme", "Russie", 413],
+            ["eduard", "latypov", "Homme", "Russie", 348],
+            ["said karimulla", "khalili", "Homme", "Russie", 222],
 
 
             /*  Slovaquie
@@ -223,6 +268,10 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["emma", "nilsson", "Femme", "Suède", 18],
             ["johanna", "skottheim", "Femme", "Suède", 9],
 
+            /*  Homme
+            */
+            ["sebastian", "samuelsson", "Homme", "Suède", 717],
+            ["martin", "ponsiluoma", "Homme", "Suède", 381],
 
             /*  Suisse
                 Femme
@@ -232,6 +281,10 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["aita", "gasparin", "Femme", "Suisse", 69],
             ["amy", "baserga", "Femme", "Suisse", 33],
             ["selena", "gasparin", "Femme", "Suisse", 7],
+
+            /*  Homme
+            */
+            ["benjamin", "weger", "Homme", "Suisse", 339],
 
 
             /*  Tchéquie
@@ -244,6 +297,10 @@ class AthleteFixtures extends Fixture implements OrderedFixtureInterface
             ["eva", "puskarcikova", "Femme", "Tchéquie", 30],
             ["tereza", "vinklarkova", "Femme", "Tchéquie", 12],
             ["eliska", "tepla", "Femme", "Tchéquie", 5],
+
+            /*  Homme
+            */
+            ["michal", "krcmar", "Homme", "Tchéquie", 332],
 
 
             /*  Ukraine
