@@ -44,9 +44,20 @@ class Athlete
      */
     private $runs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="athlete")
+     */
+    private $users;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $total2021;
+
     public function __construct()
     {
         $this->runs = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +139,48 @@ class Athlete
                 $run->setAthlete(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setAthlete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getAthlete() === $this) {
+                $user->setAthlete(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTotal2021(): ?int
+    {
+        return $this->total2021;
+    }
+
+    public function setTotal2021(?int $total2021): self
+    {
+        $this->total2021 = $total2021;
 
         return $this;
     }

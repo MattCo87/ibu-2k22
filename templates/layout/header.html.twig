@@ -1,6 +1,6 @@
 <header class="app_header">
 	<a href="{{ path('home') }}" class="app_logo" title="{{ 'pages.home.title' | trans | capitalize }}">
-		<img src="{{ asset('assets/images/logo_adndd.png') }}" alt=""/>
+		<img src="{{ asset('assets/images/logo_ibu.png') }}" alt=""/>
 	</a>
 
 	<input class="app_navigation_toggle" type="checkbox" id="menu_btn"/>
@@ -10,67 +10,53 @@
 
 	<nav class="app_navigation">
 		<ul>
-			<li>
-				<a href="#" title="about">
-					about
-				</a>
-			</li>
-
-			<li>
-				<a href="#" title="play">
-					play
-				</a>
-			</li>
-
-			<li>
-				<a href="#" title="game">
-					game
-				</a>
-			</li>
-
 			{% if app.user %}
-				<li>
-					<a href="#" {% if 'user' in app.request.get('_route') %} class="active" {% endif %}>{{ app.user.email is not null ? app.user.email : app.user.fullname }}</a>
+				{% if app.user.athlete %}
+					{% set i = 1 %}
+					<li>
+						<img class="app_image thumbnail2" src="{{ asset(app.user.athlete.country.flag) }}" alt=""/>
+					</li>
+					<li>
+						<a href="{{ path('app_athlete_profil', {'id': app.user.athlete.id }) }}" title="Perso">
+							{{ app.user.athlete.firstname | trans | capitalize }}
+							{{ app.user.athlete.lastname | trans | upper }}
+						</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ path('app_athlete_choose') }}" title="Perso">
+							{{ 'challenger' | trans | capitalize }}
+						</a>
+					</li>
+				{% endif %}
+			</li>
+			<li>
+				<a href="{{ path('app_calendar') }}" title="Calendrier">
+					{{ 'calendrier' | trans | capitalize }}
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('app_athlete_choose') }}" title="Athlètes">
+					{{ 'athlète' | trans | capitalize }}
+				</a>
+			</li>
+			<li>
+				<a href="#" {% if 'user' in app.request.get('_route') %} class="active" {% endif %}>{{ app.user.email is not null ? app.user.email : app.user.fullname }}</a>
 
-					<ul class="app_navigation_dropdown">
-						<li>
-							<a href="#" title="titre1">
-								titre1
-							</a>
-						</li>
-
-						<li>
-							<a href="#" title="titre2">
-								titre2
-							</a>
-						</li>
-
-						<li>
-							<a href="#" title="titre3">
-								titre3
-							</a>
-						</li>
-
-						<li>
-							<a href="#" title="titre4">
-								titre4
-							</a>
-						</li>
-
-						<li>
-							<a href="{{ path('app_logout') }}" title="logout">
-								{{ 'logout' | trans | capitalize }}
-							</a>
-						</li>
-					</ul>
-				</li>
-			{% else %}
-				<li>
-					<a href="{{ path('app_login') }}" title="{{ 'login' | trans | capitalize }}">
-						login
-					</a>
-				</li>
-			{% endif %}
-		</ul>
-	</nav>
-</header>
+				<ul class="app_navigation_dropdown">
+					<li>
+						<a href="{{ path('app_logout') }}" title="logout">
+							{{ 'Déconnexion' | trans | capitalize }}
+						</a>
+					</li>
+				</ul>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ path('app_login') }}" title="{{ 'login' | trans | capitalize }}">
+					Connexion
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav></header>

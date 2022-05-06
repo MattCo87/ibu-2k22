@@ -34,6 +34,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Athlete::class, inversedBy="users")
+     */
+    private $athlete;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,5 +118,17 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getAthlete(): ?Athlete
+    {
+        return $this->athlete;
+    }
+
+    public function setAthlete(?Athlete $athlete): self
+    {
+        $this->athlete = $athlete;
+
+        return $this;
     }
 }
