@@ -28,7 +28,7 @@ class Run
     private $stepRun;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $resultRun;
 
