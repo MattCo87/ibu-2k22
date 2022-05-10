@@ -62,10 +62,14 @@ class AthleteController extends AbstractController
 
             if (($form->getData()->getGender()->getId() == '3') && ($form->getData()->getCountry()->getId() == '1')) {
                 $athletes = $this->ema->findAll();
-            }             
+            }
 
             if (empty($athletes)) {
                 $message = "Pas d'athlète de cette catégorie";
+            } else {
+                if (count($athletes) > 1) {
+                    $message = count($athletes) . " athlètes";
+                }
             }
         }
 

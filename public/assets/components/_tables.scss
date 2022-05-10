@@ -1,4 +1,4 @@
-h2{
+h2 {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
@@ -7,6 +7,7 @@ h2{
 .app_table {
     justify-content: center;
     display: flex;
+    width : 100%;
 
     td {
         padding: 1.5rem;
