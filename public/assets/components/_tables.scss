@@ -7,7 +7,7 @@ h2 {
 .app_table {
     justify-content: center;
     display: flex;
-    width : 100%;
+    width: 100%;
 
     td {
         padding: 1.5rem;
@@ -17,5 +17,10 @@ h2 {
 
     a {
         text-decoration: none;
+    }
+
+    .you {
+        background-color: blue;
+        color: white;
     }
 }

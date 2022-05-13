@@ -7,6 +7,7 @@ use App\Entity\Run;
 use App\Entity\User;
 use App\Repository\ShotRepository;
 use App\Repository\ZoneRepository;
+use App\Repository\AthleteRepository;
 use App\Service;
 use App\Service\GoPlay;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +22,15 @@ class PlayController extends AbstractController
     private $emr;
     private $ems;
     private $emz;
+    private $ema;
 
-    public function __construct(Security $security, RunRepository $emr, ShotRepository $ems, ZoneRepository $emz, EntityManagerInterface $manager)
+    public function __construct(Security $security, RunRepository $emr, AthleteRepository $ema, ShotRepository $ems, ZoneRepository $emz, EntityManagerInterface $manager)
     {
         $this->security = $security;
         $this->emr = $emr;
         $this->ems = $ems;
         $this->emz = $emz;
+        $this->ema = $ema;
         $this->manager = $manager;
     }
 
@@ -53,11 +56,11 @@ class PlayController extends AbstractController
 
     public function PlayGame(Run $run): Response
     {
-        $play = new GoPlay($this->ems, $this->emz, $this->manager);
+        $play = new GoPlay($this->ema, $this->ems, $this->emz, $this->emr, $this->manager);
         $run = $this->emr->find($run->getId());
 
         $result = $play->GoGame($run, $this->security->getUser());
-
+//dd($result);
         return $this->render('play/game.html.twig', [
             'result' => $result,
             'run' => $run,

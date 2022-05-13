@@ -19,6 +19,25 @@ class RunRepository extends ServiceEntityRepository
         parent::__construct($registry, Run::class);
     }
 
+    public function addRun($zone, $resultrun, $daterun, $athlete, $competition, $hourrun, $stage, $steprun, $setshot){
+        $temp_Run = new Run;
+
+        $temp_Run->setZone($zone);
+        $temp_Run->setResultRun($resultrun);
+        $temp_Run->setDateRun($daterun);
+        $temp_Run->setAthlete($athlete);
+        $temp_Run->setCompetition($competition);
+        $temp_Run->setHourRun($hourrun);
+        $temp_Run->setStage($stage);
+        $temp_Run->setStepRun($steprun);
+        $temp_Run->setShot($setshot);
+
+        return $temp_Run;
+    }
+
+
+
+
     // /**
     //  * @return Run[] Returns an array of Run objects
     //  */
